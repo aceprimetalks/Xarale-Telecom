@@ -1,0 +1,20 @@
+from django.db import models
+
+# Create your models here.
+
+class Staff(models.Model):
+    Staff_Name = models.CharField(max_length=200)
+    Staff_Position = models.CharField(max_length=200)
+    Staff_Pic = models.FileField()
+
+    def __str__(self):
+        return self.Staff_Name
+    
+
+class Staff_Social(models.Model):
+    Staff_Name = models.ForeignKey(Staff, on_delete=models.CASCADE)
+    Facebook = models.URLField("facebook", max_length=200, blank = True)
+    Twitter = models.URLField("Twitter", max_length=200, blank = True)
+    Linkedin = models.URLField("Linkedin", max_length=200, blank = True)
+    Instagram = models.URLField("Instagram", max_length=200, blank = True)
+
